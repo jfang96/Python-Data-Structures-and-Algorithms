@@ -9,14 +9,25 @@ class BST:
         self.root = None
         self.size = 0
 
-    def display(self):
-        self.inorder(self.root)
+    def display(self, sortType = "inorder"):
+        arr = []
 
-    def inorder(self, node):
-        if node is not None:
-            self.inorder(node.left)
-            print(node.data)
-            self.inorder(node.right)
+        if sortType == "inorder":
+            self.inorder(self.root, arr)
+        elif sortType == "preorder":
+            self.preorder(self.root, arr)
+        elif sortType == "postorder":
+            self.postorder(self.root, arr)
+            
+        print(arr)
+
+    def inorder(self, node, arr):
+        if node is None:
+            return
+
+        self.inorder(node.left, arr)
+        arr.append(node.data)
+        self.inorder(node.right, arr)
             
 
     def add(self, data):
