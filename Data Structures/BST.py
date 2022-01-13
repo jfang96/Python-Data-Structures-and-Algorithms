@@ -1,5 +1,5 @@
 class BSTNode:
-    def __init__(self, data):
+    def __init__(self, data = 0):
         self.data = data
         self.left = None
         self.right = None
@@ -96,6 +96,7 @@ class BST:
         elif data > curr.data:
             curr.right = self.rRemove(curr.right, data)
         else: # Data found
+            self.size -= 1
             if curr.left is None and curr.right is None: # 0 child case
                 return None
             if curr.left is not None and curr.right is not None: # Two child case
@@ -107,6 +108,8 @@ class BST:
             elif curr.right is not None: # 1 child case (right)
                 return curr.right 
 
+        return curr
+
     def removeSuccessor(self, curr, tempNode):
         ''' Remove successor '''
         if curr.left is None:
@@ -114,6 +117,7 @@ class BST:
             return curr.right
         else:
             curr.left = self.removeSuccessor(curr.left, tempNode)
+        return curr
 
     def removePredecessor(self, curr, tempNode):
         if curr.right is None:
