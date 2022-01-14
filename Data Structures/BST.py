@@ -1,5 +1,5 @@
 class BSTNode:
-    def __init__(self, data = 0):
+    def __init__(self, data):
         self.data = data
         self.left = None
         self.right = None
@@ -58,6 +58,21 @@ class BST:
                 arr.append(curr.data)
                 queue.append(curr.left)
                 queue.append(curr.right)
+                
+    def contains(self, data):
+        return self.rContains(self.root, data)
+
+    def rContains(self, node, data):
+        if node is None:
+            return False
+        if node.data == data:
+            return True
+
+        if data > node.data:
+            node = self.rContains(node.right, data)
+        elif data < node.data:
+            node = self.rContains(node.left, data)
+            
 
     def add(self, data):
         '''  Add the data as a leaf in the BST. Should traverse the tree to find
@@ -96,7 +111,6 @@ class BST:
         elif data > curr.data:
             curr.right = self.rRemove(curr.right, data)
         else: # Data found
-            self.size -= 1
             if curr.left is None and curr.right is None: # 0 child case
                 return None
             if curr.left is not None and curr.right is not None: # Two child case
@@ -108,8 +122,6 @@ class BST:
             elif curr.right is not None: # 1 child case (right)
                 return curr.right 
 
-        return curr
-
     def removeSuccessor(self, curr, tempNode):
         ''' Remove successor '''
         if curr.left is None:
@@ -117,7 +129,6 @@ class BST:
             return curr.right
         else:
             curr.left = self.removeSuccessor(curr.left, tempNode)
-        return curr
 
     def removePredecessor(self, curr, tempNode):
         if curr.right is None:
