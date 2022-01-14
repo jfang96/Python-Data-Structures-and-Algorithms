@@ -66,12 +66,12 @@ class BST:
         if node is None:
             return False
         if node.data == data:
-            return True
+            return (True, node)
 
         if data > node.data:
-            node = self.rContains(node.right, data)
+            return self.rContains(node.right, data)
         elif data < node.data:
-            node = self.rContains(node.left, data)
+            return self.rContains(node.left, data)
             
 
     def add(self, data):

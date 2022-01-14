@@ -37,5 +37,8 @@ class TestBSTMethods(unittest.TestCase):
         self.assertTrue(self.bst.contains(2)) # Check left parent
         self.assertTrue(self.bst.contains(3)) # Check right leaf
 
+        self.assertFalse(self.bst.contains(8)) 
+        self.assertFalse(self.bst.contains(0))
+
 if __name__ == '__main__':
     unittest.main()
