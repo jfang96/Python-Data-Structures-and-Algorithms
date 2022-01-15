@@ -18,6 +18,7 @@ class MaxHeap:
         return len(self.arr) - 1
 
     def add(self, data):
+        ''' Add element to heap '''
         self.arr.append(data)
         self.upheap(self.size())
 
