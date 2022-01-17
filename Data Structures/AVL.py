@@ -124,6 +124,7 @@ class AVL:
             curr.right = self.rAdd(curr.right, data)
         curr.update()       
         curr.details() 
+        curr = self.balance(curr)
         return curr
 
     def remove(self, data):
@@ -165,6 +166,7 @@ class AVL:
             curr.right = self.removePredecessor(curr.right, tempNode)
 
     def rotateLeft(self, node):
+        print("rotating left")
         pivotNode = node.right
         node.right = pivotNode.left
         pivotNode.left = node
@@ -173,9 +175,27 @@ class AVL:
         return pivotNode
 
     def rotateRight(self, node):
+        print("rotating right")
         pivotNode = node.left
         node.left = pivotNode.right
         pivotNode.right = node
         node.update()
         pivotNode.update()
         return pivotNode
+
+    def balance(self, node):
+        ''' Rebalance the tree '''
+        if node.bf >= 2: # Left heavy
+            if node.left is not None and node.left.bf >= 0: # Left Child is left heavy or balanced
+                node = self.rotateRight(node)
+            else: # Left child is right heavy
+                node.left = self.rotateLeft(node.left)
+                node = self.rotateRight(node)
+        elif node.bf <= -2: # Right heavy
+            if node.right is not None and node.right.bf <= 0: # Right child is right heavy or balanced
+                node = self.rotateLeft(node)
+            else: # Right child is left heavy
+                node.right = self.rotateRight(node.right)
+                node = self.rotateLeft(node)
+                
+        return node

@@ -11,7 +11,7 @@ class TestBSTMethods(unittest.TestCase):
         for num in arr:
             self.avl.add(num)
         
-        self.assertEqual(self.avl.display(), [1, 3, 4, 6, 7, 8, 10, 13, 14])
+        self.assertEqual(self.avl.display("levelorder"), [1, 3, 4, 6, 7, 8, 10, 13, 14])
 
     def test_remove(self):
         return
