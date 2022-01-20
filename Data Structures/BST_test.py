@@ -14,7 +14,16 @@ class TestBSTMethods(unittest.TestCase):
         self.assertEqual(self.bst.display(), [1, 3, 4, 6, 7, 8, 10, 13, 14])
 
     def test_remove(self):
-        return
+        arr = [8, 3, 1, 6, 4, 7, 10, 14, 13]
+        for num in arr:
+            self.bst.add(num)
+
+        self.bst.display()
+        self.bst.remove(8)
+        self.assertEqual(self.bst.display("levelorder"), [10, 3, 14, 1, 6, 13, 4, 7])
+        self.assertEqual(self.bst.display(), [1, 3, 4, 6, 7, 10, 13, 14])
+        self.bst.display()
+        
 
     def test_traversals(self):
         arr = [4, 2, 6, 1, 3, 5, 7]
