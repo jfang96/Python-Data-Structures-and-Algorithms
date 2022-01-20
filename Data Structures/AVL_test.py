@@ -2,7 +2,7 @@
 import unittest
 from AVL import AVL
 
-class TestBSTMethods(unittest.TestCase):
+class TestAVLMethods(unittest.TestCase):
     def setUp(self) -> None:
         self.avl = AVL()
 
@@ -11,10 +11,19 @@ class TestBSTMethods(unittest.TestCase):
         for num in arr:
             self.avl.add(num)
         
-        self.assertEqual(self.avl.display("levelorder"), [1, 3, 4, 6, 7, 8, 10, 13, 14])
+        self.assertEqual(self.avl.display(), [1, 3, 4, 6, 7, 8, 10, 13, 14])
 
     def test_remove(self):
-        return
+        arr = [8, 3, 1, 6, 4, 7, 10, 14, 13]
+        for num in arr:
+            self.avl.add(num)
+
+        self.avl.display()
+        self.avl.remove(8)
+        self.assertEqual(self.avl.display("levelorder"), [6, 3, 10, 1, 4, 7, 13, 14])
+        self.assertEqual(self.avl.display(), [1, 3, 4, 6, 7, 10, 13, 14])
+        self.avl.display()
+        
 
     def test_traversals(self):
         arr = [4, 2, 6, 1, 3, 5, 7]

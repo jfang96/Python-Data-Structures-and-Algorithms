@@ -1,5 +1,5 @@
 class AVLNode:
-    def __init__(self, data):
+    def __init__(self, data=None):
         self.data = data
         self.left = None
         self.right = None
@@ -110,7 +110,7 @@ class AVL:
          Args:
          data -- data to add
          '''
-        print("start")
+        print("Attempting to add {data}.".format(data=data))
         self.root = self.rAdd(self.root, data)
 
     def rAdd(self, curr, data):
@@ -122,12 +122,17 @@ class AVL:
             curr.left = self.rAdd(curr.left, data)
         elif data > curr.data: # Traverse right
             curr.right = self.rAdd(curr.right, data)
+        else: # Data already exists
+            return curr
+
+        self.size += 1
         curr.update()       
         curr.details() 
         curr = self.balance(curr)
         return curr
 
     def remove(self, data):
+        print("Attempting to remove {data}.".format(data=data))
         self.root = self.rRemove(self.root, data)
 
     def rRemove(self, curr, data):
@@ -139,16 +144,23 @@ class AVL:
         elif data > curr.data:
             curr.right = self.rRemove(curr.right, data)
         else: # Data found
+            self.size -= 1
             if curr.left is None and curr.right is None: # 0 child case
                 return None
             if curr.left is not None and curr.right is not None: # Two child case
                 tempNode = AVLNode() # Create dummy node to hold removed Successor
-                curr.right = self.removeSuccessor(curr.right, tempNode) # Set right subtree
+                curr.right = self.removeSuccessor(curr.right, tempNode)
                 curr.data = tempNode.data # Update current node's data with the successor data
             elif curr.left is not None: # 1 child case (left)
                 return curr.left
             elif curr.right is not None: # 1 child case (right)
                 return curr.right 
+        
+        curr.update()
+        curr = self.balance(curr)
+
+        return curr
+
 
     def removeSuccessor(self, curr, tempNode):
         ''' Remove successor '''
@@ -158,12 +170,16 @@ class AVL:
         else:
             curr.left = self.removeSuccessor(curr.left, tempNode)
 
+        return curr
+
     def removePredecessor(self, curr, tempNode):
         if curr.right is None:
             tempNode.data = curr.data
             return curr.left
         else:
             curr.right = self.removePredecessor(curr.right, tempNode)
+
+        return curr
 
     def rotateLeft(self, node):
         print("rotating left")
