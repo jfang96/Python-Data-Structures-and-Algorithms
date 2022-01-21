@@ -27,5 +27,30 @@ def mergeSort(arr):
 
     return arr
 
+def mergeSortPythonic(arr):
+    if len(arr) <= 1:
+        return arr
+    midpoint = len(arr) // 2
+
+    left = mergeSort(arr[:midpoint])
+    right = mergeSort(arr[midpoint:])
+
+    # Merge left and right
+    newArr = []
+    while len(left) > 0 and len(right) > 0:
+        if left[0] < right[0]:
+            newArr.append(left[0])
+            del left[0]
+        else:
+            newArr.append(right[0])
+            del right[0]
+    
+    newArr.extend(left)
+    newArr.extend(right)
+
+    return newArr
+
+
 arr = [5, 3, 6, 1, 9, 4, 2, 8, 7]
-print(mergeSort(arr))
+print(mergeSort(list(arr)))
+print(mergeSortPythonic(list(arr)))
