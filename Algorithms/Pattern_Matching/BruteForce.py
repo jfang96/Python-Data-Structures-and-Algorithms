@@ -18,7 +18,7 @@ def bruteForce(text, pattern):
         i = 0 
         # Iterate through pattern
         while i <= m-1:
-            print(f"index: {i}, pattern: {pattern[i]}, text: {text[i+t]}")
+            # print(f"index: {i}, pattern: {pattern[i]}, text: {text[i+t]}")
             # If chars match, continue until end of the pattern
             if pattern[i] == text[i+t]:   
                 i += 1
@@ -29,7 +29,7 @@ def bruteForce(text, pattern):
                 break
 
 
-text = "ababcabbabb"
+text = "ababcabbabbds"
 pattern = "babb"
 
 print(bruteForce(text, pattern))
