@@ -11,7 +11,7 @@ def radixSort(arr):
         # Iterate through array
         for i in range(0, len(arr)):
             digit = findDigit(arr[i], pos) # Find digit
-            print(f"val: {arr[i]}, Position: {pos}, digit: {digit}")
+            # print(f"val: {arr[i]}, Position: {pos}, digit: {digit}")
             if arr[i] >= 0: # Positive number
                 buckets[digit+9].add_last(arr[i]) # Add to queue
             else: # Negative number
@@ -21,7 +21,6 @@ def radixSort(arr):
             while bucket.size > 0:
                 arr[idx] = bucket.remove_first() # Remove from queue back to array
                 idx += 1
-        print(arr)
 
     return arr
 
