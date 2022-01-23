@@ -9,8 +9,8 @@ Repository of code of my journey learning data structures and algorightms with P
 ## Contents
 - [ ] Data Structures
   - [ ] Linked Lists
-    - [ ] Linked List
-    - [ ] Doubly Linked List
+    - [x] Linked List
+    - [x] Doubly Linked List
     - [ ] Circular Linked List
   - [ ] Stacks
   - [ ] Queues
@@ -18,23 +18,35 @@ Repository of code of my journey learning data structures and algorightms with P
     - [ ] Depth First Traversal
     - [ ] Breadth First Traversal
   - [ ] Trees
-    - [ ] Tree Traversal
-    - [ ] Binary Search Tree
-    - [ ] AVL Tree
+    - [x] Tree Traversal (in BST class)
+    - [x] Binary Search Tree
+    - [x] AVL Tree
     - [ ] Spanning Tree
-    - [ ] Heap
-- [ ] Sorting
-  - [ ] Bubble Sort
-  - [ ] Insertion Sort
-  - [ ] Selection Sort
-  - [ ] Merge Sort
-  - [ ] Shell Sort
-  - [ ] Quick Sort
-- [ ] Searching
-  - [ ] Linear Search
-  - [ ] Binary Search
-  - [ ] Interpolation Search
-  - [ ] Hash Table
-- [ ] Recursion
-  - [ ] Tower of Hanoi
-  - [ ] Fibonacci Series
+    - [x] Max Heap
+    - [ ] Min Heap
+- [ ] Algorithms
+  - [ ] Sorting
+    - [x] Iterative Sorts
+      - [x] Bubble Sort
+      - [x] Insertion Sort
+      - [x] Selection Sort
+      - [x] Cocktail Shaker Sort
+    - [ ] Divide and Conquer Sorts
+      - [x] Merge Sort
+      - [ ] Shell Sort
+      - [x] Quick Sort
+      - [x] Quick Select (Not a sort)
+      - [x] Radix Sort
+  - [ ] Pattern Matching
+    - [ ] Brute Force
+    - [ ] Boyer-Moore
+    - [ ] Knuth-Morris-Pratt (KMP)
+    - [ ] Rabin-Karp
+  - [ ] Searching
+    - [ ] Linear Search
+    - [ ] Binary Search
+    - [ ] Interpolation Search
+    - [ ] Hash Table
+  - [ ] Recursion
+    - [ ] Tower of Hanoi
+    - [ ] Fibonacci Series
