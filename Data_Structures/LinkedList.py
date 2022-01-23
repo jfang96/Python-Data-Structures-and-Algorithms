@@ -47,16 +47,26 @@ class LinkedList:
 
     # Remove first element
     def remove_first(self):
+        eleData = None
+        if self.size == 0:
+            return eleData
+            
         if self.size == 1: 
             self.head = None
             self.tail = None
         else:
+            eleData = self.head.data
             self.head.data = None
             self.head = self.head.next
         self.size -= 1
+        return eleData
 
     # Remove last element
     def remove_last(self):
+        eleData = None
+        if self.size == 0: 
+            return eleData
+
         if self.size == 1:
             self.head = None
             self.tail = None
@@ -64,17 +74,9 @@ class LinkedList:
             curr = self.head
             while curr.next != self.tail:
                 curr = curr.next
+            eleData = self.tail.data
             curr.next = None
             self.tail.data = None
             self.tail = curr
         self.size -= 1
-
-list1 = LinkedList()
-list1.add_first("1")
-list1.add_last("5")
-list1.add_last("6")
-list1.add_last("7")
-list1.remove_first()
-list1.remove_last()
-
-list1.print_list()
+        return eleData
