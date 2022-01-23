@@ -11,7 +11,11 @@ def radixSort(arr):
         # Iterate through array
         for i in range(0, len(arr)):
             digit = findDigit(arr[i], pos) # Find digit
-            buckets[digit+9].add_last(arr[i]) # Add to queue
+            print(f"val: {arr[i]}, Position: {pos}, digit: {digit}")
+            if arr[i] >= 0: # Positive number
+                buckets[digit+9].add_last(arr[i]) # Add to queue
+            else: # Negative number
+                buckets[9-digit].add_last(arr[i]) # Add to queue
         idx = 0
         for bucket in buckets:
             while bucket.size > 0:
@@ -38,4 +42,7 @@ def mostDigits(arr):
 
 
 arr = [17, 743, 672, 780, 917, 743, 623, 288, 432, 281, 76]
+print(radixSort(arr))
+
+arr = [17, 743, -672, 780, 917, 743, -623, 288, 432, -281, -76, 0]
 print(radixSort(arr))
