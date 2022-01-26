@@ -1,29 +1,17 @@
-def bruteForce(text, pattern):
-    '''Algorithm BruteForce(text, pattern)
-	for t <- 0 to n - m
-		i <- 0
-		while i <= m - 1
-			if pattern[i] matches text[i + t]
-				if i < m - 1
-					continue the inner loop
-				else
-					return index of match in text
-			else
-                stop the inner loop''' 
-    
+def bruteForce(text, pattern):    
     n = len(text)
     m = len(pattern)
     # Iterate through the text
-    for t in range(0, n-m+1): 
-        i = 0 
+    for i in range(0, n-m+1): # Index for text
+        j = 0 # Index for pattern
         # Iterate through pattern
-        while i <= m-1:
+        while j <= m-1:
             # print(f"index: {i}, pattern: {pattern[i]}, text: {text[i+t]}")
-            # If chars match, continue until end of the pattern
-            if pattern[i] == text[i+t]:   
-                i += 1
-                if i > m-1:
-                    return i+t-m
+            # If chars match, continue to next char
+            if pattern[j] == text[i+j]:   
+                j += 1
+                if j > m-1: # All chars match! Return the index where pattern starts
+                    return i+j-m
             # If chars don't match, move to next char in text
             else:
                 break
