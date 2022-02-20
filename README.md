@@ -30,7 +30,6 @@ Repository of code of my journey learning data structures and algorithms with Py
   - [ ] Spanning Tree
   - [x] Max Heap
   - [ ] Min Heap
-- [ ] Algorithms
 
 ## Algorithms
 - [ ] Sorting
