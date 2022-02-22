@@ -1,9 +1,8 @@
-# Python-Algorithms
-Learning Python
-
+# Python Data Structures and Algorithms
+Implementing Python Data structures and algorithms through auditing GTx CS1332: Data Structures & Algorithms. 
 
 ## Purpose
-Repository of code of my journey learning data structures and algorithms with Python.
+Repository of data structures and algorithms with Python.
 
 ## Contents
 * Data Structures
