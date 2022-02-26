@@ -43,11 +43,11 @@ Repository of data structures and algorithms with Python.
     - [x] Quick Sort
     - [x] Quick Select (Not a sort)
     - [x] Radix Sort
-- [ ] Pattern Matching
-  - [ ] Brute Force
-  - [ ] Boyer-Moore
-  - [ ] Knuth-Morris-Pratt (KMP)
-  - [ ] Rabin-Karp
+- [x] Pattern Matching
+  - [x] Brute Force
+  - [x] Boyer-Moore
+  - [x] Knuth-Morris-Pratt (KMP)
+  - [x] Rabin-Karp
 - [ ] Graphs
   - [ ] Depth First Traversal
   - [ ] Breadth First Traversal
