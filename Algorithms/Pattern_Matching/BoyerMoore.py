@@ -1,7 +1,7 @@
 def BoyerMoore(pattern, text):
     ''' Boyer-Moore Pattern Matching Algorithm
         Time: O(mn)
-        Space: O(1)
+        Space: O(1); Last Table and results arr
     '''
     last = BMLastTable(pattern)
 
