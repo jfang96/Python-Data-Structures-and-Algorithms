@@ -1,4 +1,8 @@
-def BoyerMoore(text, pattern):
+def BoyerMoore(pattern, text):
+    ''' Boyer-Moore Pattern Matching Algorithm
+        Time: O(mn)
+        Space: O(1)
+    '''
     last = BMLastTable(pattern)
 
     def compare(char1, char2):
@@ -27,7 +31,7 @@ def BoyerMoore(text, pattern):
                     continue
             else: # If doesn't exist in pattern, shift past value
                 i = i + j + 1
-                
+
     return (res, compare.counter)
 
 def BMLastTable(pattern):
@@ -38,8 +42,7 @@ def BMLastTable(pattern):
     return last
 
 
-
-
+# Testing
 pattern = "aaabb"
 text = "aaaabbaab"
-print(BoyerMoore(text, pattern))
+print(BoyerMoore(pattern, text))

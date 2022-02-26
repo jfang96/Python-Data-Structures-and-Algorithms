@@ -1,4 +1,11 @@
-def KMP(text, pattern):
+def KMP(pattern, text):
+    ''' Knuth-Morris-Pratt patttern matching algorithm 
+        Time: O(m + n)
+            O(m) for failure table
+            O(n) for iterating through text
+        Space: O(m)
+            O(m) for failure table
+    '''
     res = []
 
     ft = failureTable(pattern)
@@ -28,6 +35,7 @@ def KMP(text, pattern):
 
 
 def failureTable(pattern):
+    ''' Creates a failure table tracking the prefixes of the pattern '''
     ft = [0] * len(pattern)
     iPrefix, iQuery = 0, 1 # Create indices
     while iQuery < len(pattern):
@@ -46,7 +54,7 @@ def failureTable(pattern):
     
     return ft
 
-
+# Testing
 pattern = "aaabb"
 text = "aaaabbaab"
-print(KMP(text, pattern))
+print(KMP(pattern, text))

@@ -1,4 +1,8 @@
-def bruteForce(text, pattern):    
+def bruteForce(text, pattern): 
+    ''' Brute force pattern matching algorithm
+        Time: O(mn)
+        Space: O(1)    
+    '''   
     n = len(text)
     m = len(pattern)
     # Iterate through the text
@@ -16,7 +20,7 @@ def bruteForce(text, pattern):
             else:
                 break
 
-
+# Testing
 text = "ababcabbabbds"
 pattern = "babb"
 
