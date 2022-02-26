@@ -30,7 +30,9 @@ def RabinKarp(pattern, text):
     return res
 
 def calcHash(pattern, base):
-    ''' Calculate hash of pattern with base. Assume hash function is ASCII. '''
+    ''' Calculate hash of pattern with base. Assume hash function is ASCII. 
+	    H(p) = h(p[0]) * BASE^(m-1) + … + h(p[m-2]) * BASE^1 + h(p[m-1]) * BASE^0
+    '''
     hash = 0
     m = len(pattern)
     for i, char in enumerate(pattern):
@@ -38,7 +40,9 @@ def calcHash(pattern, base):
     return hash
 
 def updateHash(oldHash, oldChar, newChar, base):
-    ''' Update current hash by removing oldChar from hash and adding newChar. '''
+    ''' Update current hash by removing oldChar from hash and adding newChar. 
+        NewHash = (OldHash - h(OldChar)) * BASE^(m-1)) * BASE + h(NewChar)
+    '''
     m = len(pattern)
     return (oldHash - ord(oldChar) * base**(m-1)) * base + ord(newChar)
     
