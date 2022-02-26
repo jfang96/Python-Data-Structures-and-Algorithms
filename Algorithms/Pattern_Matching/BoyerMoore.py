@@ -17,6 +17,7 @@ def BoyerMoore(text, pattern):
             j -= 1
         if j == -1: # Pattern found
             res.append(i)
+            i += 1
         else: # Text and pattern do not match
             shift = 0
             if text[i+j] in last: # Check if mismatched value exists in pattern
@@ -25,8 +26,8 @@ def BoyerMoore(text, pattern):
                     i = i + j - shift # Shift to next matching value
                     continue
             else: # If doesn't exist in pattern, shift past value
-                i = i + j
-        i += 1
+                i = i + j + 1
+                
     return (res, compare.counter)
 
 def BMLastTable(pattern):
@@ -39,6 +40,6 @@ def BMLastTable(pattern):
 
 
 
-pattern = "ab"
-text = "aaabaab"
+pattern = "aaabb"
+text = "aaaabbaab"
 print(BoyerMoore(text, pattern))
