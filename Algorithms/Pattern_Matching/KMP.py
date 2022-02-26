@@ -1,20 +1,30 @@
-def KMP(pattern, text):
+def KMP(text, pattern):
+    res = []
+
     ft = failureTable(pattern)
 
-    j, k = 0, 0
-    m, n = len(pattern), len(text)
+    def compare(char1, char2):
+        compare.counter += 1
+        return char1 == char2
+    compare.counter = 0
+
+    j, k = 0, 0 # j: Pattern index, k: Text index
+    m, n = len(pattern), len(text) # m: Pattern length, n: Text length
 
     while k < n:
-        if pattern[j] == text[k]:
+        if compare(pattern[j], text[k]):
             if j == m - 1:
-                return k # Full match has been found
+                res.append(k - j) # Full match has been found
+                k += 1
             else: # Case 1: Char matches
                 j += 1
                 k += 1
-        elif pattern[j] != text[k] and j == 0: # Case 2: Mismatch, j = 0
+        elif j == 0: # Case 2: Mismatch, j = 0
             k += 1
         else: # Case 3: Mismatch, j != 0
             j = ft[j-1]
+    
+    return (res, compare.counter)
 
 
 def failureTable(pattern):
@@ -27,7 +37,7 @@ def failureTable(pattern):
             iPrefix += 1
             iQuery += 1
         # Match not found, failure table = 0 at index
-        elif pattern[iPrefix] != pattern[iQuery] and iPrefix == 0:
+        elif iPrefix == 0:
             ft[iQuery] = 0
             iQuery += 1
         # Match not found, prefix index > 1
@@ -35,3 +45,8 @@ def failureTable(pattern):
             iPrefix = ft[iPrefix-1]
     
     return ft
+
+
+pattern = "aaabb"
+text = "aaaabbaab"
+print(KMP(text, pattern))
