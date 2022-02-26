@@ -2,7 +2,6 @@ def BoyerMoore(text, pattern):
     last = BMLastTable(pattern)
 
     def compare(char1, char2):
-        print('compare')
         return char1 == char2
 
     res = []
