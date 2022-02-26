@@ -34,9 +34,13 @@ def KMP(pattern, text):
     return (res, compare.counter)
 
 
+def KMP(pattern, text):
+    ft = failureTable(pattern)
+
 def failureTable(pattern):
     ''' Creates a failure table tracking the prefixes of the pattern '''
     ft = [0] * len(pattern)
+<<<<<<< HEAD
     iPrefix, iQuery = 0, 1 # Create indices
     while iQuery < len(pattern):
         # Match is found, increment indices
@@ -51,6 +55,20 @@ def failureTable(pattern):
         # Match not found, prefix index > 1
         else:
             iPrefix = ft[iPrefix-1]
+=======
+    prefix, query = 0 # Create indices
+    while query < len(pattern):
+        # If match is found, 
+        if pattern[prefix] == pattern[query]:
+            ft[query] = prefix + 1
+            prefix += 1
+            query += 1
+        elif pattern[prefix] != pattern[query] and prefix == 0:
+            ft[query] = 0
+            query += 1
+        else:
+            prefix = ft[prefix-1]
+>>>>>>> b47b0d159e72b27c0d42c5c0de7fb119e7148906
     
     return ft
 
