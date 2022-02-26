@@ -1,8 +1,10 @@
 def bruteForce(text, pattern): 
     ''' Brute force pattern matching algorithm
         Time: O(mn)
-        Space: O(1)    
+        Space: O(1); results arr
     '''   
+    res = []
+
     n = len(text)
     m = len(pattern)
     # Iterate through the text
@@ -15,13 +17,16 @@ def bruteForce(text, pattern):
             if pattern[j] == text[i+j]:   
                 j += 1
                 if j > m-1: # All chars match! Return the index where pattern starts
-                    return i+j-m
+                    res.append(i+j-m)
+                    break
             # If chars don't match, move to next char in text
             else:
                 break
+    
+    return res
 
 # Testing
-text = "ababcabbabbds"
+text = "ababbcabbabbds"
 pattern = "babb"
 
 print(bruteForce(text, pattern))
