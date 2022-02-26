@@ -2,7 +2,9 @@ def BoyerMoore(text, pattern):
     last = BMLastTable(pattern)
 
     def compare(char1, char2):
+        compare.counter += 1
         return char1 == char2
+    compare.counter = 0
 
     res = []
 
@@ -25,7 +27,7 @@ def BoyerMoore(text, pattern):
             else: # If doesn't exist in pattern, shift past value
                 i = i + j
         i += 1
-    return res
+    return (res, compare.counter)
 
 def BMLastTable(pattern):
     ''' Create dictionary of values : last_index for pattern '''
