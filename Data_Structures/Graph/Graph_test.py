@@ -7,58 +7,77 @@ import unittest
 class testGraph(unittest.TestCase):
 
     def setUp(self) -> None: 
-       
+        self.a = Vertex("a")
+        self.b = Vertex("b")
+        self.c = Vertex("c")
+        self.d = Vertex("d")
+        self.e = Vertex("e")
+        self.f = Vertex("f")
+        self.one = Vertex(1)
+        self.two = Vertex(2)
+        self.three = Vertex(3)
+        self.four = Vertex(4)
+        self.five = Vertex(5)
+        self.six = Vertex(6)
+        self.seven = Vertex(7)
+
+        self.graph = Graph()
+        self.directedGraph = Graph()
+
         # Setup undirected graph with letters 
-        a = Vertex("a")
-        b = Vertex("b")
-        c = Vertex("c")
-        d = Vertex("d")
-        e = Vertex("e")
-        f = Vertex("f")
+        self.edges = []
+        self.edges.append(Edge(self.a, self.b, 3, False))
+        self.edges.append(Edge(self.a, self.c, 5, False))
+        self.edges.append(Edge(self.a, self.d, 4, False))
+        self.edges.append(Edge(self.b, self.e, 3, False))
+        self.edges.append(Edge(self.b, self.f, 5, False))
+        self.edges.append(Edge(self.c, self.d, 2, False))
+        self.edges.append(Edge(self.d, self.e, 1, False))
+        self.edges.append(Edge(self.e, self.f, 2, False))
 
-        edges = []
-        edges.append(Edge(a, b, 3, False))
-        edges.append(Edge(a, c, 5, False))
-        edges.append(Edge(a, d, 4, False))
-        edges.append(Edge(b, e, 3, False))
-        edges.append(Edge(b, f, 5, False))
-        edges.append(Edge(c, d, 2, False))
-        edges.append(Edge(d, e, 1, False))
-        edges.append(Edge(e, f, 2, False))
-
-        graph = Graph(edges)
+        self.graph = Graph(self.edges)
 
         # Setup directed graph with numbers
-        one = Vertex(1)
-        two = Vertex(2)
-        three = Vertex(3)
-        four = Vertex(4)
-        five = Vertex(5)
-        six = Vertex(6)
-        seven = Vertex(7)
+        self.edgesDirected = []
+        self.edgesDirected.append(Edge(self.one, self.two, 1, True))
+        self.edgesDirected.append(Edge(self.one, self.three, 1, True))
+        self.edgesDirected.append(Edge(self.one, self.four, 1, True))
+        self.edgesDirected.append(Edge(self.three, self.five, 1, True))
+        self.edgesDirected.append(Edge(self.five, self.four, 1, True))
+        self.edgesDirected.append(Edge(self.four, self.six, 1, True))
+        self.edgesDirected.append(Edge(self.five, self.seven, 1, True))
+        self.edgesDirected.append(Edge(self.seven, self.six, 1, True))
 
-        print(graph.getEdgeList())
+        self.directedGraph = Graph(self.edgesDirected)
+        
+
+    def test_creation(self):
+        print("Graph:")
+        print(self.graph.getEdgeList())
         print()
-        print(graph.getAdjacencyList())
-
-        edgesDirected = []
-        edgesDirected.append(Edge(one, two, 1, True))
-        edgesDirected.append(Edge(one, three, 1, True))
-        edgesDirected.append(Edge(one, four, 1, True))
-        edgesDirected.append(Edge(three, five, 1, True))
-        edgesDirected.append(Edge(five, four, 1, True))
-        edgesDirected.append(Edge(four, six, 1, True))
-        edgesDirected.append(Edge(five, seven, 1, True))
-        edgesDirected.append(Edge(seven, six, 1, True))
-
-        directedGraph = Graph(edgesDirected)
-
-        print(directedGraph.getEdgeList())
+        print(self.graph.getAdjacencyList())
         print()
-        print(directedGraph.getAdjacencyList())
 
-    def test_add(self):
+        print("Directed Graph:")
+        print(self.directedGraph.getEdgeList())
+        print()
+        print(self.directedGraph.getAdjacencyList())
         self.assertTrue(1)
+    
+    
+    def test_bfs(self):
+        bfsCorrect = []
+        bfsCorrect.append(self.a)
+        bfsCorrect.append(self.b)
+        bfsCorrect.append(self.c)
+        bfsCorrect.append(self.d)
+        bfsCorrect.append(self.e)
+        bfsCorrect.append(self.f)
+
+        bfsAnswer = self.graph.bfs(self.a)
+        print(f"BFS Answer: {bfsAnswer}\nBFS Correct: {bfsCorrect}")
+        self.assertEqual(bfsCorrect, bfsAnswer)
+
 
 if __name__ == '__main__':
     unittest.main()
