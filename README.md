@@ -49,8 +49,8 @@ Repository of data structures and algorithms with Python.
   - [x] Knuth-Morris-Pratt (KMP)
   - [x] Rabin-Karp
 - [ ] Graphs
-  - [ ] Depth First Traversal
-  - [ ] Breadth First Traversal
+  - [ ] Depth First Search
+  - [x] Breadth First Search
 - [ ] Searching
   - [ ] Linear Search
   - [ ] Binary Search
