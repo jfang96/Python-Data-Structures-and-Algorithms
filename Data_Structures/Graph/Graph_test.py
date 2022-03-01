@@ -79,6 +79,20 @@ class testGraph(unittest.TestCase):
         print(f"BFS Answer: {bfsAnswer}\nBFS Correct: {bfsCorrect}")
         self.assertEqual(bfsCorrect, bfsAnswer)
 
+    def test_bfsDirected(self):
+        bfsCorrect = []
+        bfsCorrect.append(self.one)
+        bfsCorrect.append(self.two)
+        bfsCorrect.append(self.three)
+        bfsCorrect.append(self.four)
+        bfsCorrect.append(self.five)
+        bfsCorrect.append(self.six)
+        bfsCorrect.append(self.seven)
+
+        bfsAnswer = self.directedGraph.bfs(self.one)
+        print(f"BFS Answer: {bfsAnswer}\nBFS Correct: {bfsCorrect}")
+        self.assertEqual(bfsCorrect, bfsAnswer)
+
     def test_dfs(self):
         dfsCorrect = []
         dfsCorrect.append(self.a)
@@ -89,6 +103,20 @@ class testGraph(unittest.TestCase):
         dfsCorrect.append(self.f)
 
         dfsAnswer = self.graph.dfs(self.a)
+        print(f"DFS Answer: {dfsAnswer}\nDFS Correct: {dfsCorrect}")
+        self.assertEqual(dfsCorrect, dfsAnswer)
+
+    def test_dfsDirected(self):
+        dfsCorrect = []
+        dfsCorrect.append(self.one)
+        dfsCorrect.append(self.two)
+        dfsCorrect.append(self.three)
+        dfsCorrect.append(self.five)
+        dfsCorrect.append(self.four)
+        dfsCorrect.append(self.six)
+        dfsCorrect.append(self.seven)
+
+        dfsAnswer = self.directedGraph.dfs(self.one)
         print(f"DFS Answer: {dfsAnswer}\nDFS Correct: {dfsCorrect}")
         self.assertEqual(dfsCorrect, dfsAnswer)
 
