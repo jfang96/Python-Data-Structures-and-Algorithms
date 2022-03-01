@@ -69,3 +69,6 @@ class Graph:
         dfsHelper(self, startVertex, vs, res)
 
         return res
+
+    def dijkstras(self, startVertex):
+        return

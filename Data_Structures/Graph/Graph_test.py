@@ -120,5 +120,14 @@ class testGraph(unittest.TestCase):
         print(f"DFS Answer: {dfsAnswer}\nDFS Correct: {dfsCorrect}")
         self.assertEqual(dfsCorrect, dfsAnswer)
 
+    def test_dijkstras(self):
+        dijkstrasAnswer = self.graph.dijkstras(self.c)
+        self.assertEquals(5, dijkstrasAnswer.get(self.a).intValue())
+        self.assertEquals(6, dijkstrasAnswer.get(self.b).intValue())
+        self.assertEquals(0, dijkstrasAnswer.get(self.c).intValue())
+        self.assertEquals(2, dijkstrasAnswer.get(self.d).intValue())
+        self.assertEquals(3, dijkstrasAnswer.get(self.e).intValue())
+        self.assertEquals(5, dijkstrasAnswer.get(self.f).intValue())
+
 if __name__ == '__main__':
     unittest.main()
