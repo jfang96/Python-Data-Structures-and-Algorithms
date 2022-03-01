@@ -48,3 +48,24 @@ class Graph:
                     vertexQ.append(w.vertex)
         
         return res
+    
+    def dfs(self, startVertex):
+        ''' Depth First Search '''
+
+         # Check if startVertex is in the graph
+        if startVertex not in self.adjacencyList:
+            return "Start vertex not found!"
+
+        res = []
+        vs = set() # Visited Set
+
+        def dfsHelper(self, vertex, vs, res):
+            res.append(vertex)
+            vs.add(vertex)
+            for w in self.adjacencyList.get(vertex):
+                if w.vertex not in vs:
+                    dfsHelper(self, w.vertex, vs, res)
+
+        dfsHelper(self, startVertex, vs, res)
+
+        return res

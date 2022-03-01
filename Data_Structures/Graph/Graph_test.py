@@ -5,6 +5,7 @@ from Vertex import Vertex
 import unittest
 
 class testGraph(unittest.TestCase):
+    ''' Test cases for graph algorithms. Adapted from GTx CS1332 GraphAlgorithmsStudentTests Class '''
 
     def setUp(self) -> None: 
         self.a = Vertex("a")
@@ -78,6 +79,18 @@ class testGraph(unittest.TestCase):
         print(f"BFS Answer: {bfsAnswer}\nBFS Correct: {bfsCorrect}")
         self.assertEqual(bfsCorrect, bfsAnswer)
 
+    def test_dfs(self):
+        dfsCorrect = []
+        dfsCorrect.append(self.a)
+        dfsCorrect.append(self.b)
+        dfsCorrect.append(self.e)
+        dfsCorrect.append(self.d)
+        dfsCorrect.append(self.c)
+        dfsCorrect.append(self.f)
+
+        dfsAnswer = self.graph.dfs(self.a)
+        print(f"DFS Answer: {dfsAnswer}\nDFS Correct: {dfsCorrect}")
+        self.assertEqual(dfsCorrect, dfsAnswer)
 
 if __name__ == '__main__':
     unittest.main()
