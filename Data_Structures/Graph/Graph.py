@@ -1,4 +1,5 @@
 from collections import OrderedDict, deque
+from DisjointSet import DisjointSet
 from VertexDistancePair import VertexDistancePair
 import math
 
@@ -10,7 +11,6 @@ sys.path.append(parentdir)
 from MinHeap import MinHeap
 
 class Graph:
-    ''' Adapted from GTx CS1332 Java Graph Class '''
     def __init__(self, edges = []):
         self.adjacencyList = OrderedDict() # Map of Vertex to other vertices
         self.edges = edges
@@ -30,6 +30,9 @@ class Graph:
 
     def getEdgeList(self):
         return self.edges
+
+    def getVertices(self):
+        return self.adjacencyList.keys()
 
     def getAdjacencyList(self):
         res = ""
@@ -110,4 +113,23 @@ class Graph:
                         queue.add(VertexDistancePair(adjVertex, dist+adjDist))
 
         return distances
-        
+
+    def kruskals(self):
+        dsMap = {} # Disjoint Set map
+        mst = set() # MST Edge set
+        queue = MinHeap()
+
+        for edge in self.edges:
+            queue.add(edge)
+            dsMap[edge.u] = DisjointSet()
+            dsMap[edge.v] = DisjointSet()
+
+        while not queue.isEmpty() and len(mst) < self.size() - 1:
+            edge = queue.remove()
+            uDS = dsMap[edge.u] # Disjoint set of u
+            vDS = dsMap[edge.v] # Disjoint set of v
+            if not uDS.parent == vDS.parent:
+                mst.add(edge)
+                uDS.union(vDS)
+
+        return mst

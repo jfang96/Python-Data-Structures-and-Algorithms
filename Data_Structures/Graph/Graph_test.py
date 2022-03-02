@@ -138,5 +138,17 @@ class testGraph(unittest.TestCase):
         self.assertEquals(3, dijkstrasAnswer[self.e])
         self.assertEquals(5, dijkstrasAnswer[self.f])
 
+    def test_kruskal(self):
+        kruskalsAnswer = self.graph.kruskals()
+        kruskalsCorrect = set()
+        kruskalsCorrect.add(Edge(self.a, self.b, 3, False))
+        kruskalsCorrect.add(Edge(self.b, self.e, 3, False))
+        kruskalsCorrect.add(Edge(self.e, self.d, 1, False))
+        kruskalsCorrect.add(Edge(self.d, self.c, 2, False))
+        kruskalsCorrect.add(Edge(self.e, self.f, 2, False))
+        print(kruskalsAnswer)
+        print(kruskalsCorrect)
+        self.assertEquals(kruskalsCorrect, kruskalsAnswer)
+
 if __name__ == '__main__':
     unittest.main()

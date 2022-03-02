@@ -17,3 +17,22 @@ class Edge:
             return f"[{str(self.u)}->{str(self.v)}, {str(self.weight)}]"
         else:
             return f"[{str(self.u)}-{str(self.v)}, {str(self.weight)}]"
+
+    def __lt__(self, other):
+        return self.weight < other.weight
+
+    def __eq__(self, other):
+        if self.directed ^ other.directed:
+            return False
+
+        if self.directed:
+            return self.weight == other.weight and self.u == other.u and self.v == other.v
+        
+        return self.weight == other.weight and (self.u == other.u and self.v == other.v) or (self.u == other.v and self.v == other.u)
+
+
+    def __key(self):
+        return (self.u, self.v, self.weight)
+
+    def __hash__(self):
+        return(hash(self.__key()))
