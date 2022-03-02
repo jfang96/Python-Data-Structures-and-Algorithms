@@ -146,8 +146,6 @@ class testGraph(unittest.TestCase):
         kruskalsCorrect.add(Edge(self.e, self.d, 1, False))
         kruskalsCorrect.add(Edge(self.d, self.c, 2, False))
         kruskalsCorrect.add(Edge(self.e, self.f, 2, False))
-        print(kruskalsAnswer)
-        print(kruskalsCorrect)
         self.assertEquals(kruskalsCorrect, kruskalsAnswer)
 
 if __name__ == '__main__':

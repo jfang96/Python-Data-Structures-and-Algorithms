@@ -22,13 +22,13 @@ Repository of data structures and algorithms with Python.
   - [ ] Circular Linked List
 - [ ] Stacks
 - [ ] Queues
-- [ ] Trees
+- [x] Trees
   - [x] Tree Traversal (in BST class)
   - [x] Binary Search Tree
   - [x] AVL Tree
-  - [ ] Spanning Tree
+  - [x] Spanning Tree (Minimum Spanning Tree covered in Graphs Algorithms)
   - [x] Max Heap
-  - [ ] Min Heap
+  - [x] Min Heap
 
 ## Algorithms
 - [ ] Sorting
@@ -48,9 +48,11 @@ Repository of data structures and algorithms with Python.
   - [x] Boyer-Moore
   - [x] Knuth-Morris-Pratt (KMP)
   - [x] Rabin-Karp
-- [ ] Graphs
-  - [ ] Depth First Search
+- [x] Graphs
+  - [x] Depth First Search
   - [x] Breadth First Search
+  - [x] Dijkstra's Algorithm
+  - [x] Kruskal's Algorithm (Related to Minimum Spanning Tree)
 - [ ] Searching
   - [ ] Linear Search
   - [ ] Binary Search

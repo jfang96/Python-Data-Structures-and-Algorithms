@@ -30,9 +30,9 @@ class Edge:
         
         return self.weight == other.weight and (self.u == other.u and self.v == other.v) or (self.u == other.v and self.v == other.u)
 
-
-    def __key(self):
-        return (self.u, self.v, self.weight)
-
     def __hash__(self):
-        return(hash(self.__key()))
+        return (0 if self.u is None else hash(self.u) \
+            ^ 0 if self.v is None else hash(self.v) \
+                ^ self.weight \
+                    ^ 1 if self.directed else 0)
+        
