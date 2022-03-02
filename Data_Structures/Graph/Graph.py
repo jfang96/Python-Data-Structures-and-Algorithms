@@ -87,17 +87,21 @@ class Graph:
         distances = {}
         queue = MinHeap()
 
+        # Set all distances to infinity
         for v in self.adjacencyList:
             distances[v] = math.inf
         
+        # Add start vertex distance as 0
         queue.add(VertexDistancePair(startVertex, 0))
 
+        # Go through queue until all nodes have been visited
         while not queue.isEmpty() and len(vs) < self.size():
             vdPair = queue.remove()
             vertex = vdPair.vertex
             dist = vdPair.distance
             if vertex not in vs:
                 vs.add(vertex)
+                # Update shortest distance 
                 distances[vertex] = min(distances[vertex], dist)
                 for adjVdPair in self.adjacencyList.get(vertex):
                     adjVertex = adjVdPair.vertex
