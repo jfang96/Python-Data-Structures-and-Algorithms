@@ -1,5 +1,13 @@
 from collections import OrderedDict, deque
 from VertexDistancePair import VertexDistancePair
+import math
+
+import os, sys
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
+
+from MinHeap import MinHeap
 
 class Graph:
     ''' Adapted from GTx CS1332 Java Graph Class '''
@@ -16,6 +24,9 @@ class Graph:
                 self.adjacencyList.get(edge.v).append(VertexDistancePair(edge.u, edge.weight))
             else:
                 self.directed = True
+
+    def size(self):
+        return len(self.adjacencyList)
 
     def getEdgeList(self):
         return self.edges
@@ -71,4 +82,28 @@ class Graph:
         return res
 
     def dijkstras(self, startVertex):
-        return
+
+        vs = set() # Visited Set
+        distances = {}
+        queue = MinHeap()
+
+        for v in self.adjacencyList:
+            distances[v] = math.inf
+        
+        queue.add(VertexDistancePair(startVertex, 0))
+
+        while not queue.isEmpty() and len(vs) < self.size():
+            vdPair = queue.remove()
+            vertex = vdPair.vertex
+            dist = vdPair.distance
+            if vertex not in vs:
+                vs.add(vertex)
+                distances[vertex] = min(distances[vertex], dist)
+                for adjVdPair in self.adjacencyList.get(vertex):
+                    adjVertex = adjVdPair.vertex
+                    adjDist = adjVdPair.distance
+                    if adjVertex not in vs:
+                        queue.add(VertexDistancePair(adjVertex, dist+adjDist))
+
+        return distances
+        

@@ -18,6 +18,9 @@ class MinHeap:
     def size(self):
         return len(self.arr) - 1
 
+    def isEmpty(self):
+        return self.size == 0
+
     def add(self, data):
         ''' Add element to heap '''
         self.arr.append(data)
@@ -50,17 +53,17 @@ class MinHeap:
             return
 
         rightIndex = self.right(index)
-        # Determine lowest valued child
-        if rightIndex < self.size() and self.arr[rightIndex] < self.arr[leftIndex]:
-            largestChildIndex = rightIndex
+        # Determine lowest valued child. If right child is out of bounds, swap with left child
+        if rightIndex <= self.size() and self.arr[rightIndex] < self.arr[leftIndex]:
+            smallestChildIndex = rightIndex
         else: 
-            largestChildIndex = leftIndex
+            smallestChildIndex = leftIndex
 
         # If lowest valued child is less than current, swap. Else, terminate.
-        if self.arr[largestChildIndex] < self.arr[index]:
-            self.arr[largestChildIndex], self.arr[index] = self.arr[index], self.arr[largestChildIndex]
+        if self.arr[smallestChildIndex] < self.arr[index]:
+            self.arr[smallestChildIndex], self.arr[index] = self.arr[index], self.arr[smallestChildIndex]
         else:
             return
 
-        self.downheap(largestChildIndex)
+        self.downheap(smallestChildIndex)
         

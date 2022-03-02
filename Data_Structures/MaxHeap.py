@@ -50,7 +50,7 @@ class MaxHeap:
 
         rightIndex = self.right(index)
         # Determine highest valued child
-        if rightIndex < self.size() and self.arr[rightIndex] > self.arr[leftIndex]:
+        if rightIndex <= self.size() and self.arr[rightIndex] > self.arr[leftIndex]:
             largestChildIndex = rightIndex
         else: 
             largestChildIndex = leftIndex

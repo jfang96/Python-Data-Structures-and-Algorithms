@@ -10,3 +10,9 @@ class VertexDistancePair:
 
     def __repr__(self):
         return f"[{str(self.vertex)}, {str(self.distance)}]"
+
+    def __lt__(self, other):
+        return self.distance < other.distance
+        
+    def __eq__(self, other):
+        return self.distance == other.distance
