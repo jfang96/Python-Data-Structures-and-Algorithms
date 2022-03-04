@@ -148,5 +148,15 @@ class testGraph(unittest.TestCase):
         kruskalsCorrect.add(Edge(self.e, self.f, 2, False))
         self.assertEquals(kruskalsCorrect, kruskalsAnswer)
 
+    def test_prims(self):
+        primsAnswer = self.graph.prims(self.a)
+        primsCorrect = set()
+        primsCorrect.add(Edge(self.a, self.b, 3, False))
+        primsCorrect.add(Edge(self.b, self.e, 3, False))
+        primsCorrect.add(Edge(self.e, self.d, 1, False))
+        primsCorrect.add(Edge(self.d, self.c, 2, False))
+        primsCorrect.add(Edge(self.e, self.f, 2, False))
+        self.assertEquals(primsCorrect, primsAnswer)
+
 if __name__ == '__main__':
     unittest.main()

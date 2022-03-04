@@ -115,6 +115,7 @@ class Graph:
         return distances
 
     def kruskals(self):
+        ''' Kruskal's Algorithm for finding MST '''
         dsMap = {} # Disjoint Set map
         mst = set() # MST Edge set
         queue = MinHeap()
@@ -131,5 +132,41 @@ class Graph:
             if not uDS.parent == vDS.parent:
                 mst.add(edge)
                 uDS.union(vDS)
+
+        return mst
+
+    def prims(self, startVertex):
+        ''' Prim's algorithm for finding MST '''
+        mst = set() # MST Edge set
+        vs = set() # Visited Set
+        queue = MinHeap()
+        
+        for edge in self.edges:
+            if edge.u == startVertex or edge.v == startVertex:
+                queue.add(edge)
+
+        vs.add(startVertex)
+
+        while not queue.isEmpty() and len(vs) < self.size():
+            edge = queue.remove()
+            # u-v
+            if edge.v not in vs:
+                vs.add(edge.v)
+                endVertex = edge.v
+            # v-u
+            elif edge.u not in vs:
+                vs.add(edge.u)
+                endVertex = edge.u
+            else: 
+                continue
+
+            mst.add(edge)
+            for nextEdge in self.edges:
+                # v-w
+                if nextEdge.u == endVertex and nextEdge.v not in vs:
+                    queue.add(nextEdge)
+                # u-w
+                if nextEdge.v == endVertex and nextEdge.u not in vs:
+                    queue.add(nextEdge)
 
         return mst
