@@ -1,4 +1,5 @@
-class MaxHeap:
+class MinHeap:
+    ''' The root will have the smallest value. Priority queue implementation when priority goes to smallest value'''
     def __init__(self):
         self.arr = [None]
 
@@ -17,6 +18,9 @@ class MaxHeap:
     def size(self):
         return len(self.arr) - 1
 
+    def isEmpty(self):
+        return self.size == 0
+
     def add(self, data):
         ''' Add element to heap '''
         self.arr.append(data)
@@ -27,8 +31,8 @@ class MaxHeap:
             return
 
         parentIndex = self.parent(index)
-        # If curr higher priority than parent, swap. Else, terminate
-        if self.arr[index] > self.arr[parentIndex]: 
+        # If curr less than parent, swap. Else, terminate
+        if self.arr[index] < self.arr[parentIndex]: 
             self.arr[index], self.arr[parentIndex] = self.arr[parentIndex], self.arr[index]
         else:
             return
@@ -49,17 +53,17 @@ class MaxHeap:
             return
 
         rightIndex = self.right(index)
-        # Determine highest valued child
-        if rightIndex <= self.size() and self.arr[rightIndex] > self.arr[leftIndex]:
-            largestChildIndex = rightIndex
+        # Determine lowest valued child. If right child is out of bounds, swap with left child
+        if rightIndex <= self.size() and self.arr[rightIndex] < self.arr[leftIndex]:
+            smallestChildIndex = rightIndex
         else: 
-            largestChildIndex = leftIndex
+            smallestChildIndex = leftIndex
 
-        # If highest valued child is greater than current, swap. Else, terminate.
-        if self.arr[largestChildIndex] > self.arr[index]:
-            self.arr[largestChildIndex], self.arr[index] = self.arr[index], self.arr[largestChildIndex]
+        # If lowest valued child is less than current, swap. Else, terminate.
+        if self.arr[smallestChildIndex] < self.arr[index]:
+            self.arr[smallestChildIndex], self.arr[index] = self.arr[index], self.arr[smallestChildIndex]
         else:
             return
 
-        self.downheap(largestChildIndex)
+        self.downheap(smallestChildIndex)
         
