@@ -24,6 +24,6 @@ graph = {
     'l': ['k'], 
     'o': ['n'], 
     'n': ['o']
-    }
+}
 
 print(connectedComponentCount(graph))
